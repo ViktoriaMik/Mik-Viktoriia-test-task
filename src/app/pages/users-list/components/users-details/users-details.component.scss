@@ -1,0 +1,35 @@
+@import "/src/assets/variables";
+
+.details-holder {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+.action-holder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 5px 10px;
+  color: $label-color;
+  text-decoration: none;
+  font-size: 20px;
+
+  &:hover {
+    color: $label-color-dark  ;
+  }
+}
+
+.back-button::before {
+  content: "\2190";
+  margin-right: 5px;
+  &:hover {
+    color: $label-color-dark  ;
+  }
+}

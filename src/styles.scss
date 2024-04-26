@@ -1,0 +1,22 @@
+@import "assets/variables.scss";
+body {
+  margin: 0;
+  height: 100%;
+  font-size: 18px;
+  box-sizing: border-box;
+  letter-spacing: 0 ;
+  background: $neutral-blue-background;
+  padding: 10px 20px;
+}
+
+
+.button {
+  padding: 5px;
+  font-size: 20px;
+  border: 1px solid $label-color;
+  background: $neutral-blue-background;
+  color: $label-color;
+  border-radius: 10px;
+  width: 100px;
+  cursor: pointer;
+}

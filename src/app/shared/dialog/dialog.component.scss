@@ -1,0 +1,44 @@
+@import "/src/assets/variables";
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+  width: 40%;
+  position: relative;
+}
+.close-button {
+  background-color: transparent;
+  border: 1px solid$border-color;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0;
+  font-size: 20px;
+  position: absolute;
+  top:5px;
+  right: 5px;
+}
+
+.close-button span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #333;
+}
+
+.close-button span:hover {
+  background:$neutral-blue-background;
+}

@@ -1,0 +1,37 @@
+@import "/src/assets/variables";
+
+.users {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.header {
+  color: $label-color-dark;
+}
+
+.actions-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+}
+
+tr > td {
+  width: 200px;
+  font-size: 18px;
+  gap: 10px;
+}
+
+.search-input {
+  all: unset;
+  width: 300px;
+  border-radius: 10px;
+  background: $white;
+  height: 30px;
+  margin-bottom: 30px;
+  padding: 0 10px;
+  border: 1px solid $border-color;
+}
+

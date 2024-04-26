@@ -1,0 +1,8 @@
+<div *ngIf="isOpen" class="dialog-overlay">
+  <div class="dialog-content">
+    <button (click)="closeDialogWindow()" class="close-button">
+      <span>&times;</span>
+    </button>
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<a [href]="'users'" class="back-button">Back</a>
+
+<div class="details-holder" *ngIf="userDetails">
+  <h3>{{ userDetails.name }}</h3>
+  <div><b>Name:</b>{{ userDetails.username }}</div>
+  <div><b>Email:</b>{{ userDetails.email }}</div>
+  <div><b>Phone:</b>{{ userDetails.phone }}</div>
+  <div><b>Address:</b>{{ userDetails.address.city }}-{{ userDetails.address.street }}</div>
+  <div class="action-holder">
+    <button class="button" (click)="isEdit=true">Edit</button>
+    <button class="button" (click)="isRemove=true"> Remove</button>
+  </div>
+</div>
+<app-dialog *ngIf="isEdit" [isOpen]="isEdit" (closeDialog)="isEdit=$event">
+  <app-edit-user (userUpdated)="updateUser()" [user]="userDetails"></app-edit-user>
+</app-dialog>
+
+<app-dialog *ngIf="isRemove" [isOpen]="isRemove" (closeDialog)="isRemove=$event">
+  <h2>Remove User?</h2>
+  <div class="action-holder">
+    <button class="button" (click)="isRemove=false">NO</button>
+    <button class="button" (click)="removeUser()">Yes</button>
+  </div>
+</app-dialog>

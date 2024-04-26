@@ -1,0 +1,33 @@
+@import "/src/assets/variables";
+
+.control-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  label {
+    padding: 10px 0;
+    display: block;
+    font-size: 18px;
+    color: $label-color
+  }
+
+  input {
+    box-sizing: border-box;
+    border: 1px solid $label-color;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    font-size: 15px;
+
+    &.invalid {
+      border: 1px solid $border-color-invalid;
+    }
+  }
+}
+
+.warning {
+  font-size: 12px;
+  color: $border-color-invalid;
+  padding-top: 5px;
+}

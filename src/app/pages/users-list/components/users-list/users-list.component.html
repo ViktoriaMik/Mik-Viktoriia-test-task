@@ -1,0 +1,33 @@
+<div class="users">
+  <header class="header"><h1>Users list</h1></header>
+  <div class="actions-wrapper">
+    <input (input)="setSearchInput()" [(ngModel)]="searchInput" class="search-input"
+           placeholder="Search..."/>
+    <div>
+      <button class="button" (click)="isAddUser=true">Add User</button>
+    </div>
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of filteredUsers">
+      <td>{{ user.name }}</td>
+      <td>{{ user.phone }}</td>
+      <td style="text-align: right">
+        <button class="button" [routerLink]="''+user.id">Details</button>
+      </td>
+    </tbody>
+  </table>
+
+
+  <app-dialog *ngIf="isAddUser" [isOpen]="isAddUser" (closeDialog)="isAddUser=$event">
+    <app-add-user (userAdded)="userAdded()"></app-add-user>
+  </app-dialog>
+
+</div>

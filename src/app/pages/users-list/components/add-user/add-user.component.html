@@ -1,0 +1,57 @@
+<form class="control-wrapper" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input [ngClass]="{'invalid':userForm.controls['name'].invalid && userForm.controls['name'].touched}" type="text"
+           id="name" formControlName="name">
+    <div class="warning" *ngIf="userForm.controls['name'].invalid">
+      Name is invalid
+    </div>
+  </div>
+  <div>
+    <label for="username">Username:</label>
+    <input [ngClass]="{'invalid':userForm.controls['username'].invalid}"
+           type="text" id="username" formControlName="username">
+    <div class="warning" *ngIf="userForm.controls['username'].invalid ">
+      Username is invalid
+    </div>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input [ngClass]="{'invalid':userForm.controls['email'].invalid}" type="email"
+           id="email" formControlName="email">
+    <div class="warning" *ngIf="userForm.controls['email'].invalid">
+      Email is invalid
+    </div>
+  </div>
+  <div>
+    <label for="phone">Phone:</label>
+    <input [ngClass]="{'invalid':userForm.controls['phone'].invalid}" type="text"
+           id="phone" formControlName="phone">
+    <div class="warning" *ngIf="userForm.controls['phone'].invalid">
+      Phone is invalid
+    </div>
+  </div>
+  <div formGroupName="address">
+    <div>
+      <label for="street">City:</label>
+      <input
+        [ngClass]="{'invalid':userForm.controls['address']?.get('city')?.invalid}"
+        type="text" id="city" formControlName="city">
+      <div class="warning"
+           *ngIf="userForm.controls['address']?.get('city')?.invalid">
+        City is required
+      </div>
+    </div>
+    <div>
+      <label for="street">Street:</label>
+      <input
+        [ngClass]="{'invalid':userForm.controls['address']?.get('street')?.invalid}"
+        type="text" id="street" formControlName="street">
+      <div class="warning"
+           *ngIf="userForm.controls['address']?.get('street')?.invalid">
+        Street is required
+      </div>
+    </div>
+  </div>
+  <button class="button" type="submit" [disabled]="userForm.invalid">Save</button>
+</form>

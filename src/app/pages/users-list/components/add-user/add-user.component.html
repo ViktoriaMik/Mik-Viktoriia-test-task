@@ -1,54 +1,54 @@
 <form class="control-wrapper" [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="name">Name:</label>
-    <input [ngClass]="{'invalid':userForm.controls['name'].invalid && userForm.controls['name'].touched}" type="text"
+    <input placeholder="Name" [ngClass]="{'invalid':userForm.controls['name'].invalid && userForm.controls['name'].touched}" type="text"
            id="name" formControlName="name">
-    <div class="warning" *ngIf="userForm.controls['name'].invalid">
+    <div class="warning" *ngIf="userForm.controls['name'].invalid&&userForm.controls['name'].touched">
       Name is invalid
     </div>
   </div>
   <div>
     <label for="username">Username:</label>
-    <input [ngClass]="{'invalid':userForm.controls['username'].invalid}"
+    <input placeholder="Username" [ngClass]="{'invalid':userForm.controls['username'].invalid && userForm.controls['username'].touched}"
            type="text" id="username" formControlName="username">
-    <div class="warning" *ngIf="userForm.controls['username'].invalid ">
+    <div class="warning" *ngIf="userForm.controls['username'].invalid && userForm.controls['username'].touched">
       Username is invalid
     </div>
   </div>
   <div>
     <label for="email">Email:</label>
-    <input [ngClass]="{'invalid':userForm.controls['email'].invalid}" type="email"
+    <input placeholder="user@mail.com" [ngClass]="{'invalid':userForm.controls['email'].invalid && userForm.controls['email'].touched}" type="email"
            id="email" formControlName="email">
-    <div class="warning" *ngIf="userForm.controls['email'].invalid">
+    <div class="warning" *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched">
       Email is invalid
     </div>
   </div>
   <div>
     <label for="phone">Phone:</label>
-    <input [ngClass]="{'invalid':userForm.controls['phone'].invalid}" type="text"
+    <input placeholder="123456789" [ngClass]="{'invalid':userForm.controls['phone'].invalid && userForm.controls['phone'].touched}" type="text"
            id="phone" formControlName="phone">
-    <div class="warning" *ngIf="userForm.controls['phone'].invalid">
+    <div class="warning" *ngIf="userForm.controls['phone'].invalid&&userForm.controls['phone'].touched">
       Phone is invalid
     </div>
   </div>
   <div formGroupName="address">
     <div>
       <label for="street">City:</label>
-      <input
-        [ngClass]="{'invalid':userForm.controls['address']?.get('city')?.invalid}"
+      <input placeholder="City"
+        [ngClass]="{'invalid':userForm.controls['address']?.get('city')?.invalid &&userForm.controls['address']?.get('city')?.touched}"
         type="text" id="city" formControlName="city">
       <div class="warning"
-           *ngIf="userForm.controls['address']?.get('city')?.invalid">
+           *ngIf="userForm.controls['address']?.get('city')?.invalid && userForm.controls['address']?.get('city')?.touched">
         City is required
       </div>
     </div>
     <div>
       <label for="street">Street:</label>
-      <input
-        [ngClass]="{'invalid':userForm.controls['address']?.get('street')?.invalid}"
+      <input placeholder="Street"
+        [ngClass]="{'invalid':userForm.controls['address']?.get('street')?.invalid &&userForm.controls['address']?.get('street')?.touched}"
         type="text" id="street" formControlName="street">
       <div class="warning"
-           *ngIf="userForm.controls['address']?.get('street')?.invalid">
+           *ngIf="userForm.controls['address']?.get('street')?.invalid && userForm.controls['address']?.get('street')?.touched">
         Street is required
       </div>
     </div>

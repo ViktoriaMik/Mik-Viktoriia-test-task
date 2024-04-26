@@ -13,7 +13,7 @@ export class AddUserComponent {
     id: [''],
     name: ['', Validators.required],
     username: ['', Validators.required],
-    email: ['ok@mail.com', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.email]],
     address: this.fb.group({
       street: ['', Validators.required],
       city: ['', Validators.required],

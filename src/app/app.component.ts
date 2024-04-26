@@ -10,15 +10,7 @@ import {take} from 'rxjs';
 export class AppComponent {
   title:string = 'test-task';
 
-  constructor(private userService: UsersListService) {
-    this.setUserList();
+  constructor() {
   }
 
-  setUserList() {
-    if (!this.userService.usersList) {
-      this.userService.getUsers().pipe(take(1)).subscribe(users => {
-        this.userService.usersList = users;
-      });
-    }
-  }
 }

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UsersListService} from '@/app/pages/users-list/services/users-list.service';
 import {IUser} from '@/app/pages/users-list/interfaces/IUser';
-import {take} from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -23,16 +22,8 @@ export class UsersListComponent implements OnInit {
   }
 
   setUserList() {
-    if (!this.api.usersList) {
-      this.api.getUsers().pipe(take(1)).subscribe(users => {
-        this.api.usersList = users;
-        this.users = users;
-        this.filteredUsers=users
-      });
-    } else {
-      this.users = this.api.usersList;
-      this.filteredUsers=this.api.usersList
-    }
+    this.users = this.api.usersList;
+    this.filteredUsers = this.api.usersList;
   }
 
   setSearchInput() {

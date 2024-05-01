@@ -5,8 +5,10 @@ import {UsersDetailsComponent} from '@/app/pages/users-list/components/users-det
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DialogComponent} from '@/app/shared/dialog/dialog.component';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { AddUserComponent } from './components/add-user/add-user.component';
+import {EditUserComponent} from './components/edit-user/edit-user.component';
+import {AddUserComponent} from './components/add-user/add-user.component';
+import {UserResolver} from '@/app/pages/users-list/services/user.resolver';
+import {UsersListService} from '@/app/pages/users-list/services/users-list.service';
 
 
 @NgModule({
@@ -14,8 +16,11 @@ import { AddUserComponent } from './components/add-user/add-user.component';
   imports: [
     CommonModule,
     RouterModule.forChild([
-        {path: '', component: UsersListComponent},
-        {path: ':id', component: UsersDetailsComponent},
+        {
+          path: '', resolve: {user: UserResolver}, children: [{path: '', component: UsersListComponent},
+            {path: ':id', component: UsersDetailsComponent}],
+        },
+
       ],
     ),
     FormsModule,
@@ -23,8 +28,15 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     ReactiveFormsModule,
   ],
   exports: [
-    RouterModule
-  ]
+    RouterModule,
+  ],
+  providers: [
+    {
+      provide: UserResolver,
+      useFactory: UserResolver,
+      deps: [UsersListService],
+    },
+  ],
 })
 export class UsersListModule {
 }

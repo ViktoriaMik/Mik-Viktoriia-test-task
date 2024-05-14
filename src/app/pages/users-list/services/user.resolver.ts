@@ -1,14 +1,16 @@
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { UsersListService } from '@/app/pages/users-list/services/users-list.service';
-import { IUser } from '@/app/pages/users-list/interfaces/IUser';
-import { Observable, tap } from 'rxjs';
+import {ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot} from '@angular/router';
+import {UsersListService} from '@/app/pages/users-list/services/users-list.service';
+import {IUser} from '@/app/pages/users-list/interfaces/IUser';
+import {Observable, tap} from 'rxjs';
+import {inject} from '@angular/core';
 
-export const UserResolver = (api: UsersListService): Resolve<IUser[]> => ({
-  resolve: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IUser[]> => {
-    return api.getUsers().pipe(
-      tap(users => {
-        api.usersList = users;
-      })
-    );
-  }
-});
+
+export const UserResolver: ResolveFn<IUser[]> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+  api: UsersListService = inject(UsersListService)
+): Observable<IUser[]> => api.getUsers().pipe(
+  tap(users => {
+    api.usersList = users;
+  })
+);

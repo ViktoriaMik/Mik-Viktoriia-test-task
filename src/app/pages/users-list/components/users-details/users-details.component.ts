@@ -9,30 +9,33 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./users-details.component.scss'],
 })
 export class UsersDetailsComponent implements OnInit {
-  userDetails: IUser;
-  isEdit: boolean = false;
-  isRemove: boolean = false;
+  public userDetails: IUser;
+  public isEdit: boolean = false;
+  public isRemove: boolean = false;
 
-  constructor(private api: UsersListService, private route: ActivatedRoute, private router: Router) {
-  }
+  constructor(
+    private api: UsersListService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUserDetails();
   }
 
-  getUserDetails() {
+  private getUserDetails(): void {
     this.route.params.subscribe(params => {
-      const id = params['id'];
-      this.userDetails = this.api.getUserDetails(+id);
+      const id = +params['id'];
+      this.userDetails = this.api.getUserDetails(id);
     });
   }
 
-  updateUser() {
+  public updateUser(): void {
     this.isEdit = false;
     this.getUserDetails();
   }
 
-  removeUser() {
+  public removeUser(): void {
     this.api.removeUser(this.userDetails);
     this.router.navigate(['users']);
   }

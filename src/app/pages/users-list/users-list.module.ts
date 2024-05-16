@@ -8,7 +8,6 @@ import {DialogComponent} from '@/app/shared/dialog/dialog.component';
 import {EditUserComponent} from './components/edit-user/edit-user.component';
 import {AddUserComponent} from './components/add-user/add-user.component';
 import {UserResolver} from '@/app/pages/users-list/services/user.resolver';
-import {UsersListService} from '@/app/pages/users-list/services/users-list.service';
 
 
 @NgModule({
@@ -17,8 +16,11 @@ import {UsersListService} from '@/app/pages/users-list/services/users-list.servi
     CommonModule,
     RouterModule.forChild([
         {
-          path: '', resolve: {user: UserResolver}, children: [{path: '', component: UsersListComponent},
-            {path: ':id', component: UsersDetailsComponent}],
+          path: '', resolve: {user: UserResolver},
+          children: [
+            {path: '', component: UsersListComponent},
+            {path: ':id', component: UsersDetailsComponent},
+          ],
         },
 
       ],
@@ -30,13 +32,7 @@ import {UsersListService} from '@/app/pages/users-list/services/users-list.servi
   exports: [
     RouterModule,
   ],
-  providers: [
-    {
-      provide: UserResolver,
-      useFactory: UserResolver,
-      deps: [UsersListService],
-    },
-  ],
+  providers: [],
 })
 export class UsersListModule {
 }

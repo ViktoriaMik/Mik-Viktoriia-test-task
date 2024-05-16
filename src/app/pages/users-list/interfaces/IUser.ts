@@ -1,14 +1,10 @@
+import {IAddress} from '@/app/pages/users-list/interfaces/IAdress';
+
 export interface IUser{
   id: number;
   name: string;
   username: string;
   email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-  };
+  address:IAddress;
   phone: string;
-  website: string;
 }

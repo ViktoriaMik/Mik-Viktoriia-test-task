@@ -8,9 +8,11 @@ import {inject} from '@angular/core';
 export const UserResolver: ResolveFn<IUser[]> = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,
-  api: UsersListService = inject(UsersListService)
+  api: UsersListService = inject(UsersListService),
 ): Observable<IUser[]> => api.getUsers().pipe(
   tap(users => {
-    api.usersList = users;
-  })
+    if (!api.usersList) {
+      api.usersList = users;
+    }
+  }),
 );

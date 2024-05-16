@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {UsersListService} from '@/app/pages/users-list/services/users-list.service';
+import {IUser} from '@/app/pages/users-list/interfaces/IUser';
 
 @Component({
   selector: 'app-add-user',
@@ -17,6 +18,8 @@ export class AddUserComponent {
     address: this.fb.group({
       street: ['', Validators.required],
       city: ['', Validators.required],
+      suite: ['', Validators.required],
+      zipcode: ['', Validators.required],
     }),
     phone: ['', [Validators.required, Validators.min(8), this.phoneValidator()]],
   });
@@ -33,7 +36,7 @@ export class AddUserComponent {
   }
 
   onSubmit() {
-    this.api.addUser(this.userForm.value);
+    this.api.addUser(this.userForm.value as IUser);
     this.userAdded.emit();
   }
 }

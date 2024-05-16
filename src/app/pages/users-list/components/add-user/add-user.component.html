@@ -52,6 +52,25 @@
         Street is required
       </div>
     </div>
+    <div>
+      <label for="street">Suite:</label>
+      <input placeholder="Suite"
+        [ngClass]="{'invalid':userForm.controls['address']?.get('suite')?.invalid &&userForm.controls['address']?.get('suite')?.touched}"
+        type="text" id="suite" formControlName="suite">
+      <div class="warning"
+           *ngIf="userForm.controls['address']?.get('suite')?.invalid && userForm.controls['address']?.get('suite')?.touched">
+        Suite is required
+      </div>
+    </div><div>
+      <label for="street">Zipcode:</label>
+      <input placeholder="Zipcode"
+        [ngClass]="{'invalid':userForm.controls['address']?.get('zipcode')?.invalid &&userForm.controls['address']?.get('zipcode')?.touched}"
+        type="text" id="zipcode" formControlName="zipcode">
+      <div class="warning"
+           *ngIf="userForm.controls['address']?.get('zipcode')?.invalid && userForm.controls['address']?.get('zipcode')?.touched">
+        Zipcode is required
+      </div>
+    </div>
   </div>
-  <button class="button" type="submit" [disabled]="userForm.invalid">Save</button>
+  <button class="button" type="submit"  (click)="onSubmit()" [disabled]="userForm.invalid">Save</button>
 </form>
